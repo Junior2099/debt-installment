@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acompanhamento de Pagamento</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/1055/1055687.png">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg,#4e73df,#1cc88a);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    background:white;
+    width:95%;
+    max-width:400px;
+    border-radius:25px;
+    padding:25px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.2);
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+.header{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.header i{
+    font-size:45px;
+    color:#4e73df;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-8px);}
+}
+
+h1{
+    font-size:20px;
+    margin-top:10px;
+    font-weight:600;
+}
+
+.card{
+    background:#f8f9fc;
+    padding:15px;
+    border-radius:15px;
+    margin-bottom:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.05);
+    animation: slideUp 0.8s ease;
+}
+
+@keyframes slideUp{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+.card i{
+    color:#1cc88a;
+    margin-right:8px;
+}
+
+.progress-bar{
+    background:#e0e0e0;
+    border-radius:20px;
+    overflow:hidden;
+    height:12px;
+    margin-top:10px;
+}
+
+.progress{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,#4e73df,#1cc88a);
+    border-radius:20px;
+    transition: width 1.5s ease;
+}
+
+.footer{
+    text-align:center;
+    font-size:13px;
+    margin-top:10px;
+    color:#666;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <i class="fa-solid fa-laptop"></i>
+        <h1>Olá Olga 👋</h1>
+        <p>Acompanhe o andamento do seu pagamento</p>
+    </div>
+
+    <div class="card">
+        <p><i class="fa-solid fa-check-circle"></i>Você já pagou <strong>2 parcelas de 13</strong></p>
+        <p><i class="fa-solid fa-money-bill-wave"></i>Valor de cada parcela: <strong>R$ 200,00</strong></p>
+    </div>
+
+    <div class="card">
+        <p><i class="fa-solid fa-coins"></i>Total do notebook: <strong>R$ 2.600,00</strong></p>
+        <p><i class="fa-solid fa-calendar-days"></i>Próximo pagamento: <strong>Março</strong></p>
+
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+        <small id="percentText"></small>
+    </div>
+
+    <div class="footer">
+        Continue firme 💚 Você está indo muito bem!
+    </div>
+
+</div>
+
+<script>
+const parcelasPagas = 2;
+const valorParcela = 200;
+const total = 2600;
+
+const pago = parcelasPagas * valorParcela;
+const porcentagem = Math.round((pago / total) * 100);
+
+document.getElementById("progress").style.width = porcentagem + "%";
+document.getElementById("percentText").innerText = porcentagem + "% pago";
+</script>
+
+</body>
+</html>
